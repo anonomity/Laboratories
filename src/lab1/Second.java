@@ -11,6 +11,8 @@ public class Second {
 		
 		System.out.println(t1.getString() + " " + t1.getWeight());
 		System.out.println(t1.toString());
+		System.out.println(t1.getString().toString());
+		
 		
 		First t2 = new First("Matilda");
 		
