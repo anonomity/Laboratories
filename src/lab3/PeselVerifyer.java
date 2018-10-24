@@ -5,31 +5,32 @@ import java.util.Scanner;
 
 public class PeselVerifyer {
 	private int verify;
+	public static int newL;
 	
-	public PeselVerifyer(String Line) throws Exception   {
-	Pattern p = Pattern.compile("(\\d{11})");
-	Matcher m = p.matcher(Line);
-	try {
-	verify = Integer.parseInt(Line);
-	if(!m.find() && 11 > verify && verify > 11) {
+	public PeselVerifyer(String Line)   {
+	Pattern p = Pattern.compile("(\\d\\d\\d\\d\\d\\d\\d\\d\\d\\d)");
+	/*Matcher m = p.matcher(Line);*/
+	newL = Line.length();
+	if( 11 > newL && newL > 11) {
 		System.out.print("wrong syntax");
 	}
+	else {
+		r
 	}
-	catch(Exception ex ) {
-		throw new Exception();
 		
-	}
+
 		
 		
 	
 	}
-	public static void main(String[] args) throws Exception {
+	public static void main(String[] args){
 		// TODO Auto-generated method stub
 		System.out.print("Please insert PESEL");
 		Scanner s = new Scanner(System.in);
 		String PESEL = s.nextLine();
 		PeselVerifyer first = new PeselVerifyer(PESEL);
-		System.out.print(first);
+		System.out.println(first.toString());
+		
 		s.close();
 		
 
