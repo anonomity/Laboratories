@@ -28,19 +28,22 @@ public class Testing {
 		
 		Bag arrayBag = new Bag(5, 300.00);
 		/*PurchasedItem[] t3 = new PurchasedItem[5];*/
-		int amount = 2;
+		int amount = 3;
 		PurchasedItem[] arrayItem = new PurchasedItem[amount];
 			for(int x=0; x < amount; x++) {
-				arrayItem[x] = new PurchasedItem(Products.BUTTER, 4.0 * x, 4.0 * x, "41% fat" );
+				arrayItem[x] = new PurchasedItem(Products.MILK, 8.0 , 4.0 , "41% fat" );
 			}
 			
 		
 		
 		arrayBag.putIn(arrayItem);
-		System.out.println("array bag has....");
-		System.out.println(arrayBag.getTotalWeight());
 		
-		System.out.print(arrayBag.getProductNo(Products.MILK));
+		System.out.println(arrayBag.getArrayLength());
+		System.out.println("array bag has....");
+		System.out.println(arrayBag.getTotalItem() + " Items");
+		System.out.println("Weighs " + arrayBag.getTotalWeight());
+		
+		System.out.println(arrayBag.getProductNo(Products.MILK));
 
 		Bag second = new Bag(7, 300.0);
 

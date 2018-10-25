@@ -16,7 +16,7 @@ public class Bag {
 	private double thisWeight;
 	private int amount;
 	
-	private int y;
+	private int arrayLength;
 
 
 	Bag(int itemNo2, double weight2) {
@@ -48,11 +48,14 @@ public class Bag {
 	boolean putIn(PurchasedItem p[]) {
 
 		if (totalItems < itemNo && totalWeight < weight) {
-			totalItems = totalItems + 1;
+			/* for Testing array length */
+			arrayLength = p.length;
 			
-			for (int i = 0; i >= p.length; i++) {
-				totalItems = i + 1;
-				thisWeight = thisWeight * p[i].getWeight();
+		for (int i = 0; i < p.length; i++) {
+				thistype = p[i].getProducts();
+				thisWeight = p[i].getWeight();
+				totalItems = totalItems + 1;
+				totalWeight = thisWeight + totalWeight;
 				
 				System.out.println("item successfully added");
 			}
@@ -70,6 +73,10 @@ public class Bag {
 		totalPrice = 0;
 	}
 
+	
+	int getArrayLength() {
+		return arrayLength;
+	}
 	double getTotalPrice() {
 		return totalPrice;
 	}
