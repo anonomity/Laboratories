@@ -2,19 +2,26 @@ package lab2;
 
 public class Bag {
 
-	private int itemNo;
-	private double weight;
+	/*Initializing bag*/
+	private int itemNo; 
+	private double weight; 
+	
+	/*finding total value for specific bag */
 	private double totalWeight;
 	private int totalItems;
 	private double totalPrice;
-	private int breadCount, teaCount, milkCount, butterCount, otherCount;
-	private double breadWeight, teaWeight, milkWeight, butterWeight, otherWeight;
-	private int productNo;
-	private double productWeight;
+	
+	/*getting type and weight for specific bag*/
+	private Products thistype;
+	private double thisWeight;
+	private int amount;
+
 
 	Bag(int itemNo2, double weight2) {
 		this.itemNo = itemNo2;
 		this.weight = weight2;
+		this.amount = 0;
+		
 
 	}
 
@@ -22,22 +29,12 @@ public class Bag {
 
 		if (totalItems < itemNo && totalWeight < weight) {
 			totalItems = totalItems + 1;
+			thistype = p.getProducts();
+			thisWeight = p.getWeight();
 			totalWeight = p.getWeight() + totalWeight;
 			totalPrice = p.getPrice() + totalPrice;
-			System.out.println("item successfully added");
 
-			if (p.getProducts() == Products.BREAD) {
-				breadCount = breadCount + 1;
-				breadWeight = p.getWeight() + breadWeight;
-			} else if (p.getProducts() == Products.TEA) {
-				teaWeight = p.getWeight() + teaWeight;
-			} else if (p.getProducts() == Products.MILK) {
-				milkWeight = p.getWeight() + milkWeight;
-			} else if (p.getProducts() == Products.BUTTER) {
-				butterWeight = p.getWeight() + butterWeight;
-			} else {
-				otherWeight = p.getWeight() + otherWeight;
-			}
+			System.out.println("item successfully added");
 
 			return true;
 
@@ -53,7 +50,7 @@ public class Bag {
 				totalItems = i + 1;
 				totalWeight = 4 * i;
 				p[i] = new PurchasedItem(Products.MILK, 4.0, 5.0, "Non-Fat");
-				milkCount = milkCount + 1;
+
 				System.out.println("item successfully added");
 			}
 			return true;
@@ -82,49 +79,25 @@ public class Bag {
 	}
 
 	int getProductNo(Products p) {
-
-		switch (p) {
-		case BREAD:
-			productNo = breadCount;
-			break;
-		case MILK:
-			productNo = milkCount;
-			break;
-		case TEA:
-			productNo = teaCount;
-			break;
-		case BUTTER:
-			productNo = butterCount;
-			break;
-		case OTHER:
-			productNo = otherCount;
-			break;
-		default:
-			break;
+		
+		for (int i = 0; i < this.totalItems; i++) {
+			if (thistype == p) {
+				amount++;
+			}
 		}
-		return productNo;
+		return amount;
 
 	}
 
 	double getProductWeight(Products p) {
-		switch (p) {
-		case BREAD:
-			productWeight = breadWeight;
-			break;
-		case MILK:
-			productWeight = milkWeight;
-			break;
-		case TEA:
-			productWeight = teaWeight;
-			break;
-		case BUTTER:
-			productWeight = butterWeight;
-			break;
-		case OTHER:
-			productWeight = otherWeight;
-			break;
-		default:
-			break;
+		int count = 1;
+		double productWeight = 0.0;
+		for (int i = 0; i < totalItems; i++) {
+			if (thistype == p) {
+
+				productWeight = count * thisWeight;
+				count++;
+			}
 		}
 		return productWeight;
 

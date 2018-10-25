@@ -25,14 +25,18 @@ public class Testing {
 		System.out.println(first.getTotalItem());
 		System.out.println(first.getTotalPrice());
 
-		PurchasedItem[] t3 = new PurchasedItem[5];
+		/*PurchasedItem[] t3 = new PurchasedItem[5];*/
 
-		Bag second = new Bag(7, 115.0);
+		Bag second = new Bag(7, 300.0);
 
 		second.putIn(t1);
-		second.putIn(t3);
+		second.putIn(t1);
+		second.putIn(t1);
+		
 
-		second.getProductNo(Products.MILK);
+		
+		System.out.println(second.getProductNo(Products.BREAD));
+		System.out.println(second.getProductWeight(Products.BREAD));
 
 	}
 
