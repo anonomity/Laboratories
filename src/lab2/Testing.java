@@ -13,7 +13,7 @@ public class Testing {
 		System.out.println(t1.toString());
 		System.out.println(t1.getProducts().toString());
 
-		Bag first = new Bag(3, 60);
+		Bag first = new Bag(3, 600.00);
 
 		first.putIn(t1);
 
@@ -25,7 +25,22 @@ public class Testing {
 		System.out.println(first.getTotalItem());
 		System.out.println(first.getTotalPrice());
 
+		
+		Bag arrayBag = new Bag(5, 300.00);
 		/*PurchasedItem[] t3 = new PurchasedItem[5];*/
+		int amount = 2;
+		PurchasedItem[] arrayItem = new PurchasedItem[amount];
+			for(int x=0; x < amount; x++) {
+				arrayItem[x] = new PurchasedItem(Products.BUTTER, 4.0 * x, 4.0 * x, "41% fat" );
+			}
+			
+		
+		
+		arrayBag.putIn(arrayItem);
+		System.out.println("array bag has....");
+		System.out.println(arrayBag.getTotalWeight());
+		
+		System.out.print(arrayBag.getProductNo(Products.MILK));
 
 		Bag second = new Bag(7, 300.0);
 
