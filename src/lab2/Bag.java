@@ -4,7 +4,7 @@ public class Bag {
 
 	/*Initializing bag*/
 	private int itemNo; 
-	private double weight; 
+	private double maxWeight; 
 	
 	/*finding total value for specific bag */
 	private double totalWeight;
@@ -14,25 +14,33 @@ public class Bag {
 	/*getting type and weight for specific bag*/
 	private Products thistype;
 	private double thisWeight;
-	private int amount;
+	private int count = 0;
+	private int totalSpecificProd;
 	
 	private int arrayLength;
+	private PurchasedItem[] storage;
 
 
 	Bag(int itemNo2, double weight2) {
 		this.itemNo = itemNo2;
-		this.weight = weight2;
-		this.amount = 0;
+		this.maxWeight = weight2;
+		this.totalSpecificProd = 0;
+		this.storage = new PurchasedItem[itemNo];
+		
+		
 		
 
 	}
 
 	public boolean putIn(PurchasedItem p) {
-
-		if (totalItems < itemNo && totalWeight < weight) {
-			totalItems = totalItems + 1;
+		
 			thistype = p.getProducts();
 			thisWeight = p.getWeight();
+		if (totalItems < itemNo && totalWeight + thisWeight < maxWeight) {
+			this.storage[count] = p;
+			this.count++;
+			totalItems++;
+			
 			totalWeight = thisWeight + totalWeight;
 			totalPrice = p.getPrice() + totalPrice;
 
@@ -46,15 +54,15 @@ public class Bag {
 	}
 
 	boolean putIn(PurchasedItem p[]) {
-
-		if (totalItems < itemNo && totalWeight < weight) {
+		thisWeight = p[0].getWeight();
+		if (totalItems < itemNo && totalWeight + thisWeight < maxWeight) {
 			/* for Testing array length */
 			arrayLength = p.length;
 			
 		for (int i = 0; i < p.length; i++) {
 				thistype = p[i].getProducts();
 				thisWeight = p[i].getWeight();
-				totalItems = totalItems + 1;
+				totalItems++;
 				totalWeight = thisWeight + totalWeight;
 				
 				System.out.println("item successfully added");
@@ -92,11 +100,11 @@ public class Bag {
 	int getProductNo(Products p) {
 		
 		for (int i = 0; i < this.totalItems; i++) {
-			if (thistype == p) {
-				amount++;
+			if (this.storage[i].getProducts() == p) {
+				totalSpecificProd++;
 			}
 		}
-		return amount;
+		return totalSpecificProd;
 
 	}
 
@@ -104,7 +112,7 @@ public class Bag {
 		int count = 1;
 		double productWeight = 0.0;
 		for (int i = 0; i < totalItems; i++) {
-			if (thistype == p) {
+			if (this.storage[i].getProducts() == p) {
 
 				productWeight = count * thisWeight;
 				count++;
