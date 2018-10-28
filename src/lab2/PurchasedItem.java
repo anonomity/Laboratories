@@ -7,6 +7,7 @@ public class PurchasedItem {
 	private double price;
 	private String com;
 
+
 	PurchasedItem() {
 
 		weight = 1.0;
@@ -32,6 +33,8 @@ public class PurchasedItem {
 	public Products getProducts() {
 		return type;
 	}
+	
+	
 
 	public double getWeight() {
 		return weight;
