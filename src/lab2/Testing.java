@@ -25,22 +25,19 @@ public class Testing {
 		System.out.println(first.getTotalItem());
 		System.out.println(first.getTotalPrice());
 
-		
 		Bag arrayBag = new Bag(5, 300.00);
-		
+
 		int amount = 2;
 		PurchasedItem[] arrayItem = new PurchasedItem[amount];
-			for(int x=0; x < amount; x++) {
-				arrayItem[x] = new PurchasedItem(Products.MILK, 8.0 , 4.0 , "41% fat" );
-			}
+		for (int x = 0; x < amount; x++) {
+			arrayItem[x] = new PurchasedItem(Products.MILK, 8.0, 4.0, "41% fat");
+		}
 		int amount2 = 4;
 		PurchasedItem[] arrayItem2 = new PurchasedItem[amount2];
-			for(int x=0; x < amount2; x++) {
-				arrayItem2[x] = new PurchasedItem(Products.BUTTER, 10.0 , 5.0 , "100% fat" );
-			}
-			
-		
-		
+		for (int x = 0; x < amount2; x++) {
+			arrayItem2[x] = new PurchasedItem(Products.BUTTER, 10.0, 5.0, "100% fat");
+		}
+
 		arrayBag.putIn(arrayItem);
 		arrayBag.putIn(arrayItem2);
 		System.out.println("I have " + arrayBag.getProductNo(Products.BUTTER));
@@ -49,16 +46,13 @@ public class Testing {
 		System.out.println("array bag has....");
 		System.out.println(arrayBag.getTotalItem() + " Items");
 		System.out.println("Weighs " + arrayBag.getTotalWeight());
-	
 
 		Bag second = new Bag(7, 300.0);
 
 		second.putIn(t1);
 		second.putIn(t1);
 		second.putIn(t1);
-		
 
-		
 		System.out.println(second.getProductNo(Products.BREAD));
 		System.out.println(second.getProductWeight(Products.BREAD));
 

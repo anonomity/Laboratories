@@ -2,24 +2,23 @@ package lab2;
 
 public class Bag {
 
-	/*Initializing bag*/
-	private int itemNo; 
-	private double maxWeight; 
-	
-	/*finding total value for specific bag */
-	
+	/* Initializing bag */
+	private int itemNo;
+	private double maxWeight;
+
+	/* finding total value for specific bag */
+
 	private double totalWeight;
 	private int totalItems;
 	private double totalPrice;
-	
-	/*getting type and weight for specific bag*/
+
+	/* getting type and weight for specific bag */
 	private double thisWeight;
 	private int count = 0;
 	private int totalSpecificProd;
-	
+
 	private int arrayLength;
 	private PurchasedItem[] storage;
-
 
 	Bag(int itemNo2, double weight2) {
 		this.itemNo = itemNo2;
@@ -27,21 +26,17 @@ public class Bag {
 		this.totalSpecificProd = 0;
 		this.storage = new PurchasedItem[itemNo];
 		count = 0;
-		
-		
-		
 
 	}
 
 	public boolean putIn(PurchasedItem p) {
-		
-			
-			thisWeight = p.getWeight();
+
+		thisWeight = p.getWeight();
 		if (totalItems < itemNo && totalWeight + thisWeight < maxWeight) {
 			this.storage[count] = p;
 			this.count++;
 			totalItems++;
-			
+
 			totalWeight = thisWeight + totalWeight;
 			totalPrice = p.getPrice() + totalPrice;
 
@@ -59,17 +54,17 @@ public class Bag {
 		if (totalItems + p.length < itemNo && totalWeight + thisWeight < maxWeight) {
 			/* for Testing array length */
 			arrayLength = p.length;
-			
-		for (int i = 0; i < p.length; i++) {
+
+			for (int i = 0; i < p.length; i++) {
 				this.storage[count] = p[i];
 				this.count++;
 				thisWeight = p[i].getWeight();
 				totalItems++;
 				totalWeight = thisWeight + totalWeight;
-				
+
 				System.out.println("item successfully added");
 			}
-			
+
 			return true;
 		}
 
@@ -83,10 +78,10 @@ public class Bag {
 		totalPrice = 0;
 	}
 
-	
 	int getArrayLength() {
 		return arrayLength;
 	}
+
 	double getTotalPrice() {
 		return totalPrice;
 	}
@@ -104,9 +99,9 @@ public class Bag {
 		for (int i = 0; i < totalItems; i++)
 			if (this.storage[i].getProducts() == p) {
 				totalSpecificProd++;
-				
+
 			}
-		
+
 		return totalSpecificProd;
 
 	}
