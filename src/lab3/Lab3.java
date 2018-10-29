@@ -9,7 +9,7 @@ public class Lab3 {
 	private String regexDate = "(\\d{2})(\\/)(\\d{2})(\\/)(\\d{4})";
 	private String regexTime = "(\\d{2})(\\:)(\\d{2})(\\:)(\\d{2})";
 	private String regexIP = "(\\d{1,3})(\\.)(\\d{1,3})(\\.)(\\d{1,3})(\\.)(\\d{1,3})";
-	
+	private int count = 0;
 	// for Date Checking
 	private int day;
 	private int month;
@@ -34,6 +34,7 @@ public class Lab3 {
 		if(m1.find() == true ) {
 			System.out.println(m1.group().trim()); 
 			System.out.println("type: Pesel");
+			count++;
 		}
 		Pattern Date = Pattern.compile(regexDate);
 		Matcher m2 = Date.matcher(input);
@@ -47,9 +48,12 @@ public class Lab3 {
 			year = Integer.parseInt(yearS);
 			
 			if(day <= 31 && day > 0 && month > 0 && month <= 12 && year > 1800 && year < 3000) {
-
+			count++;
 			System.out.println(m2.group().trim()); 	
 			System.out.println("type: Date");	
+			}
+			else {
+				System.out.print("inproper format");
 			}
 		}
 		Pattern Time = Pattern.compile(regexTime);
@@ -64,9 +68,12 @@ public class Lab3 {
 			seconds = Integer.parseInt(secondS);
 			
 			if(hours >= 0 && hours < 24 && minutes >= 0 && minutes < 60 && seconds >= 0 && seconds < 60) {
+			count++;
 			System.out.println(m3.group().trim()); 	
 			System.out.println("type: Time");
-		}
+			}
+			
+		
 		}
 		Pattern Ip = Pattern.compile(regexIP);
 		Matcher m4 = Ip.matcher(input);
@@ -82,12 +89,16 @@ public class Lab3 {
 			fourth = Integer.parseInt(fourthS);
 			
 			if(first > 0 && first <= 255 && second >= 0 && second <= 255 && third >= 0 && third <= 255 && fourth >= 0 && fourth <= 255) {
+			count++;
 			System.out.println(m4.group().trim()); 	
 			System.out.println("type: IP address");
 			}
+			else {
+				System.out.print("inproper format");
+			}
 		}
 		
-		else if(m1.find() == false && m2.find() == false && m3.find() == false && m4.find() == false) {
+		else if(count == 0) {
 			System.out.print("inproper format");
 		}
 
@@ -129,7 +140,7 @@ public class Lab3 {
 		String ip3Wrong="0.42.42.42";
 		
 		
-		Lab3 test = new Lab3(ip3Wrong);
+		Lab3 test = new Lab3(date1Wrong);
 		
 	}
 
