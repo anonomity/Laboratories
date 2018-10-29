@@ -14,25 +14,29 @@ public class Bag {
 
 	/* getting type and weight for specific bag */
 	private double thisWeight;
-	private int count = 0;
+	private int count;
 	private int totalSpecificProd;
 
-	private int arrayLength;
 	private PurchasedItem[] storage;
 
 	Bag(int itemNo2, double weight2) {
+		if(itemNo2 < 0 || weight2 < 0) {
+			System.out.print(false);
+		}
+		else {
 		this.itemNo = itemNo2;
 		this.maxWeight = weight2;
 		this.totalSpecificProd = 0;
 		this.storage = new PurchasedItem[itemNo];
 		count = 0;
+		}
 
 	}
 
 	public boolean putIn(PurchasedItem p) {
 
 		thisWeight = p.getWeight();
-		if (totalItems < itemNo && totalWeight + thisWeight < maxWeight) {
+		if (totalItems < itemNo && totalWeight + thisWeight <= maxWeight) {
 			this.storage[count] = p;
 			this.count++;
 			totalItems++;
@@ -40,20 +44,15 @@ public class Bag {
 			totalWeight = thisWeight + totalWeight;
 			totalPrice = p.getPrice() + totalPrice;
 
-			System.out.println("item successfully added");
-
 			return true;
 
 		} else
-			System.out.println("Error bag is full");
-		return false;
+			return false;
 	}
 
 	boolean putIn(PurchasedItem p[]) {
 		thisWeight = p[0].getWeight();
-		if (totalItems + p.length < itemNo && totalWeight + thisWeight < maxWeight) {
-			/* for Testing array length */
-			arrayLength = p.length;
+		if (totalItems + p.length <= itemNo && totalWeight + thisWeight <= maxWeight) {
 
 			for (int i = 0; i < p.length; i++) {
 				this.storage[count] = p[i];
@@ -62,13 +61,10 @@ public class Bag {
 				totalItems++;
 				totalWeight = thisWeight + totalWeight;
 
-				System.out.println("item successfully added");
 			}
 
 			return true;
 		}
-
-		System.out.println("Error bag is full");
 		return false;
 	}
 
@@ -76,10 +72,6 @@ public class Bag {
 		totalItems = 0;
 		totalWeight = 0;
 		totalPrice = 0;
-	}
-
-	int getArrayLength() {
-		return arrayLength;
 	}
 
 	double getTotalPrice() {
