@@ -2,6 +2,7 @@ package lab3;
 
 import java.util.regex.Pattern;
 import java.util.regex.Matcher;
+import java.util.Scanner;
 
 public class Lab3 {
 	
@@ -139,8 +140,14 @@ public class Lab3 {
 		String ip2Wrong="344.0.2.0";
 		String ip3Wrong="0.42.42.42";
 		
+		Scanner sc = new Scanner(System.in);
+		while (sc.hasNextLine()) {
+			String line = sc.nextLine().trim();		
+			Lab3 test = new Lab3(line);
+		}
+		sc.close();
 		
-		Lab3 test = new Lab3(date1Wrong);
+		
 		
 	}
 
