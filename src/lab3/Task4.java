@@ -4,7 +4,7 @@ import java.util.regex.Pattern;
 import java.util.regex.Matcher;
 import java.util.Scanner;
 
-public class Lab3 {
+public class Task4 {
 	
 	private String regexPesel = "\\d{11}";
 	private String regexDate = "(\\d{2})(\\/)(\\d{2})(\\/)(\\d{4})";
@@ -27,7 +27,7 @@ public class Lab3 {
 	private int third;
 	private int fourth;
 	
-	Lab3(String input) {
+	Task4(String input) {
 		
 		Pattern Pesel = Pattern.compile(regexPesel);
 		Matcher m1 = Pesel.matcher(input);
@@ -143,7 +143,7 @@ public class Lab3 {
 		Scanner sc = new Scanner(System.in);
 		while (sc.hasNextLine()) {
 			String line = sc.nextLine().trim();		
-			Lab3 test = new Lab3(line);
+			Task4 test = new Task4(line);
 		}
 		sc.close();
 		
